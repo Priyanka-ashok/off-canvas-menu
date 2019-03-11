@@ -1,33 +1,57 @@
 .App {
-  text-align: center;
+  position: relative;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.menu-wrapper.navOpen {
+  width: 250px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.menu-wrapper.navClosed {
+  width: 0;
 }
-
-.App-link {
-  color: #61dafb;
+.main-wrapper.navOpen {
+  /* margin-left: 250px; */
+  top: 0;
+  left: 250px;
+  right: -250px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-wrapper.navClosed {
+  /* margin-left: 0; */
+  top: 0;
+  left: 0;
+}
+.main-wrapper {
+  position: absolute;
+  transition-property: left;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  padding: 16px;
+}
+.menu-wrapper{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.menu-wrapper a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.menu-wrapper a:hover {
+  color: #f1f1f1;
+}
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
