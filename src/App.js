@@ -5,22 +5,31 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isMobile: false
     }
     this.toggleNav = this.toggleNav.bind(this)
     this.closeNav = this.closeNav.bind(this)
+    this.isMobileToggle = this.isMobileToggle.bind(this)
   }
   toggleNav () {
-    this.setState({isOpen: !this.state.isOpen}, () => console.log("New State >>", this.state))
+    this.setState({isOpen: !this.state.isOpen})
   }
   closeNav () {
     this.setState({isOpen: false})
   }
+  isMobileToggle () {
+    this.setState({isMobile: !this.state.isMobile})
+  }
   render() {
     return (
       <div className="App">
-        <div className={`menu-wrapper ${this.state.isOpen ? 'navOpen' : 'navClosed'}`}><Menu closeNav={this.closeNav} /></div>
-        <div className={`main-wrapper ${this.state.isOpen ? 'navOpen' : 'navClosed'}`}><Main toggleNav={this.toggleNav} /></div>
+        <div
+          className={`menu-wrapper ${this.state.isOpen ? 'navOpen' : 'navClosed'} ${this.state.isMobile ? 'mobile' : 'desktop'}`}
+        ><Menu closeNav={this.closeNav} /></div>
+        <div
+          className={`main-wrapper ${this.state.isOpen ? 'navOpen' : 'navClosed'} ${this.state.isMobile ? 'mobile' : 'desktop'}`}
+        ><Main toggleNav={this.toggleNav} isMobileToggle={this.isMobileToggle} isMobileStatus={this.state.isMobile} /></div>
       </div>
     );
   }
@@ -44,6 +53,7 @@ function Main (props) {
       <span onClick={() => props.toggleNav()}>&#9776; open</span>
       <h1>Lorem ipsum dolor sit amet.</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, magnam maiores accusamus quis nostrum est quisquam alias officiis, inventore amet quia voluptatem. Dicta possimus aut nisi quia ducimus asperiores? Consequuntur aut neque, veritatis, fuga doloremque id, voluptate at pariatur eos mollitia esse voluptatibus iste! Earum sed eum suscipit corporis est.</p>
+      <button onClick={() => props.isMobileToggle()}>isMobile toggle</button>
     </div>
   )
 }
