@@ -55,7 +55,7 @@
   transition: 0.3s;
 }
 .menu-wrapper a:hover {
-  color: #f1f1f1;
+  color: white;
 }
 .closeBtn {
   position: absolute;
